@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ArishaModeFashion | Fashion • Style • Inspiration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fefaf6;   /* soft warm white – editorial background */
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      color: #1e1a17;
+      line-height: 1.4;
+    }
+
+    /* Elegant typography with magazine weight */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ========= HEADER ========= */
+    .site-header {
+      padding: 48px 0 32px;
+      border-bottom: 1px solid #eae3db;
+      margin-bottom: 56px;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1e1a17;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-family: 'Inter', sans-serif;
+      word-break: keep-all;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7c6e64;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    /* minimal nav */
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 36px;
+      margin-top: 8px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #2d2a27;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #b27d54;
+    }
+
+    /* ========= BLOG GRID ========= */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 48px 36px;
+      margin: 56px 0 80px;
+    }
+
+    /* Magazine-style card */
+    .blog-card {
+      background: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03), 0 4px 8px rgba(0, 0, 0, 0.02);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: default;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 42px rgba(0, 0, 0, 0.08), 0 8px 18px rgba(0, 0, 0, 0.03);
+    }
+
+    /* thumbnail image wrapper - clean magazine ratio */
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background-color: #f1ede9;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .blog-card:hover .card-img img {
+      transform: scale(1.02);
+    }
+
+    /* card content */
+    .card-content {
+      padding: 24px 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-title {
+      font-size: 1.5rem;
+      font-weight: 550;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: #1e1a17;
+      margin-bottom: 12px;
+      font-family: 'Inter', serif;
+    }
+
+    /* author + date row — small subtle text */
+    .meta-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: baseline;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #968c83;
+      margin-bottom: 14px;
+      border-bottom: none;
+      font-weight: 400;
+    }
+
+    .meta-author {
+      font-weight: 500;
+      color: #b27d54;
+    }
+
+    .meta-date {
+      font-weight: 350;
+      color: #a3968b;
+    }
+
+    .short-description {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      color: #3a3531;
+      margin-bottom: 24px;
+      font-weight: 350;
+      flex: 1;
+    }
+
+    /* "Read Full Blog" button – elegant subtle accent */
+    .read-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      border: 1px solid #ded3ca;
+      padding: 10px 20px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #2a241f;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      width: fit-content;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .read-btn::after {
+      content: "→";
+      font-size: 1rem;
+      transition: transform 0.2s ease;
+    }
+
+    .read-btn:hover {
+      background-color: #1e1a17;
+      border-color: #1e1a17;
+      color: #ffffff;
+    }
+
+    .read-btn:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* footer minimal */
+    .site-footer {
+      text-align: center;
+      padding: 48px 0 56px;
+      border-top: 1px solid #eae3db;
+      margin-top: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      color: #958c84;
+    }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .container {
+        padding: 0 20px;
+      }
+      .site-header {
+        padding: 32px 0 24px;
+        margin-bottom: 32px;
+      }
+      .logo {
+        font-size: 2rem;
+      }
+      .blog-grid {
+        gap: 32px;
+        grid-template-columns: 1fr;
+      }
+      .card-content {
+        padding: 20px;
+      }
+      .blog-title {
+        font-size: 1.35rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links {
+        gap: 28px;
+      }
+      .container {
+        padding: 0 18px;
+      }
+    }
+
+    /* subtle decoration — optional */
+    .accent-line {
+      width: 60px;
+      height: 2px;
+      background: #cfbfb0;
+      margin: 12px auto 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER SECTION -->
+  <header class="site-header">
+    <div class="logo">ArishaModeFashion</div>
+    <div class="tagline">Fashion • Style • Inspiration</div>
+    <div class="nav-links">
+      <a href="#" aria-current="page">Home</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="accent-line"></div>
+  </header>
+
+  <!-- BLOG LIST SECTION - all blog cards are manually editable -->
+  <section class="blog-grid" id="blogGrid">
+    <!-- 
+      ======================================================
+      BLOG CARD 1 — manually paste Blogger links, update:
+      - image URL (thumbnail)
+      - blog title
+      - short description
+      - author name (example: By Arisha)
+      - publish date
+      - external Blogger link for "Read Full Blog"
+      ======================================================
+    -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&auto=format" alt="runway minimalist style">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">The Quiet Luxury Edit</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">April 12, 2025</span>
+        </div>
+        <p class="short-description">Effortless tailoring, muted neutrals, and investment pieces that define understated elegance. How to curate a timeless capsule wardrobe.</p>
+        <a href="https://arishamodefashion.blogspot.com/2025/04/quiet-luxury-edit" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+
+    <!-- BLOG CARD 2 -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&auto=format" alt="street style paris">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">Spring Florals Reinvented</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">March 28, 2025</span>
+        </div>
+        <p class="short-description">Beyond romantic clichés — bold botanical prints, mix-and-match textures, and fresh silhouettes for the modern fashionista.</p>
+        <a href="https://arishamodefashion.blogspot.com/2025/03/spring-florals-reinvented" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+
+    <!-- BLOG CARD 3 -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&auto=format" alt="leather trench outfit">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">The Power of Statement Outerwear</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">February 18, 2025</span>
+        </div>
+        <p class="short-description">From sculptural coats to oversized blazers — one piece that transforms any look. Discover layering secrets from the Paris runways.</p>
+        <a href="https://arishamodefashion.blogspot.com/2025/02/statement-outerwear" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+
+    <!-- BLOG CARD 4 — extra card for modern magazine grid -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=800&auto=format" alt="evening gown editorial">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">Evening Glamour: Modern Codes</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">January 30, 2025</span>
+        </div>
+        <p class="short-description">Redefining black-tie: sheer fabrics, sculptural cuts, and unexpected accessories. Your ultimate guide to gala season elegance.</p>
+        <a href="https://arishamodefashion.blogspot.com/2025/01/evening-glamour-modern-codes" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+
+    <!-- BLOG CARD 5 - denim & heritage -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&auto=format" alt="denim look vintage">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">Denim Revival: Heritage Reimagined</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">December 5, 2024</span>
+        </div>
+        <p class="short-description">Raw hems, 90s baggy silhouettes, and artisan washes — how to make denim the hero of your everyday wardrobe.</p>
+        <a href="https://arishamodefashion.blogspot.com/2024/12/denim-revival-heritage" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+
+    <!-- BLOG CARD 6 - minimal jewelry -->
+    <article class="blog-card">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=800&auto=format" alt="minimalist jewelry">
+      </div>
+      <div class="card-content">
+        <h3 class="blog-title">The Art of Minimalist Jewelry</h3>
+        <div class="meta-info">
+          <span class="meta-author">By Arisha</span>
+          <span class="meta-date">November 20, 2024</span>
+        </div>
+        <p class="short-description">Layering fine chains, sculptural earrings, and heirloom pieces — understated accessories that speak volumes.</p>
+        <a href="https://arishamodefashion.blogspot.com/2024/11/minimalist-jewelry-art" class="read-btn" target="_blank" rel="noopener noreferrer">Read Full Blog</a>
+      </div>
+    </article>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2025 ArishaModeFashion</p>
+   <. <!-- <p style="margin-top: 8px; font-size: 0.7rem;">External blog links open in new tab</p>__>
+  </footer>
+</div>
+
+<!-- 
+  ============================================================
+  MANUALLY EDITABLE NOTES: 
+  - To update blog links: find each <a class="read-btn"> href value.
+  - To change thumbnail: update src inside <div class="card-img"> img.
+  - To update title / description / author / date: directly edit text inside corresponding HTML tags.
+  - Add more blog cards by copying entire <article class="blog-card"> block.
+  - This is a fully static showcase — no CMS, no local storage. 
+  - All external Blogger links open in new tab (target="_blank").
+  ============================================================
+-->
+
+<!-- optional smooth scroll & active nav dummy (just minimal UX) -->
+<script>
+  (function() {
+    // Very minimal script to prevent default anchor behaviour for # links 
+    // (ensures "Home" and "Blog" just scroll to top or do nothing extra, but preserves clean look)
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href === '#') {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (href === '#') {
+          // fallback: same
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          // for future relative links we keep default
+        }
+      });
+    });
+    // ensures any "Blog" link scrolls to blog grid elegantly
+    const blogNav = Array.from(navLinks).find(l => l.innerText.trim() === 'Blog');
+    if (blogNav) {
+      blogNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        const blogSection = document.getElementById('blogGrid');
+        if (blogSection) {
+          blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }
+    const homeNav = Array.from(navLinks).find(l => l.innerText.trim() === 'Home');
+    if (homeNav) {
+      homeNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  })();
+</script>
+</body>
+</html>
